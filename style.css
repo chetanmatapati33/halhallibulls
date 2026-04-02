@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Soft background to see the poster area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+.poster {
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    background-color: #ffffff; /* White background for the poster */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Keeps the whole image visible */
+}
+
+.left {
+    border-right: 1px solid #eee; /* Optional separator */
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 210mm) {
+    .poster {
+        width: 100vw;
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .left {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+}
