@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
 <html lang="kn"> 
 <head> 
     <meta charset="UTF-8"> 
@@ -506,7 +506,7 @@
     <i class="fas fa-chevron-down"></i>
 </div>
 
-<audio id="bgMusic" src="assets/WhatsApp Audio 2026-04-03 at 10.14.09 AM.mpeg" loop></audio>
+<audio id="bgMusic" src="assets/WhatsApp Audio 2026-04-03 at 10.14.09 AM.mpeg" loop autoplay></audio>
 
 <script>
     let isPlaying = false;
@@ -514,12 +514,23 @@
     const musicBtn = document.getElementById('musicBtn');
     const musicIcon = document.getElementById('musicIcon');
 
-    // Attempt to play music automatically when the page is clicked anywhere
-    document.addEventListener('click', function() {
+    // Array of interaction events to trigger autoplay
+    const interactionEvents = ['mousedown', 'touchstart', 'mousemove', 'scroll', 'keydown'];
+
+    function startAutoplay() {
         if (!isPlaying) {
             playMusic();
+            // Remove listeners once music starts
+            interactionEvents.forEach(event => {
+                document.removeEventListener(event, startAutoplay);
+            });
         }
-    }, { once: true }); // Only runs once on the first click
+    }
+
+    // Add listeners for any user interaction
+    interactionEvents.forEach(event => {
+        document.addEventListener(event, startAutoplay, { once: true });
+    });
 
     function playMusic() {
         music.play().then(() => {
@@ -527,7 +538,7 @@
             musicBtn.classList.add('playing');
             musicIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
         }).catch(error => {
-            console.log("Autoplay blocked by browser. User interaction needed.");
+            console.log("Autoplay waiting for interaction...");
         });
     }
 
@@ -537,6 +548,10 @@
             musicBtn.classList.remove('playing');
             musicIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
             isPlaying = false;
+            // Also stop the autoplay listeners if user manually turns it off
+            interactionEvents.forEach(event => {
+                document.removeEventListener(event, startAutoplay);
+            });
         } else {
             playMusic();
         }
