@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
 <html lang="kn"> 
 <head> 
     <meta charset="UTF-8"> 
@@ -283,35 +283,53 @@
 
         /* Music Button Styles */
         .music-btn {
-            position: absolute;
-            right: -25px; /* Aligned with the border but clearly outside */
-            top: 180px; /* Aligned vertically with 3rd prize row */
-            width: 50px;
-            height: 50px;
+            position: fixed;
+            right: 30px;
+            bottom: 120px;
+            width: 70px;
+            height: 70px;
             background: var(--primary);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
             border: 2px solid white;
             animation: pulse 2s infinite;
-            z-index: 100;
+            z-index: 1000;
         }
 
-        .music-btn i {
-            font-size: 30px;
-            color: white;
+        .music-btn span {
+            font-size: 35px;
         }
 
-        .playing {
-            animation: rotate 4s linear infinite;
+        /* Scroll Down Arrow */
+        .scroll-down {
+            position: fixed;
+            right: 40px;
+            bottom: 30px;
+            font-size: 40px;
+            color: var(--secondary);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 1000;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-15px);}
+            60% {transform: translateY(-7px);}
+        }
+
+        /* Map Style */
+        .map-container {
+            margin-top: 15px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         footer { padding: 20px; font-size: 0.9rem; color: #888; } 
@@ -392,15 +410,10 @@
             </div>
 
             <div class="prize-box">
-                <div style="font-size: 1.5rem; color: var(--secondary);">🥉 3ನೇ ಬಹುಮಾನ</div>
-                <div style="font-size: 1.8rem; font-weight: bold;">₹20,000/-</div>
-            </div>
-        </div>
-
-        <!-- Music Button Moved Outside Top Prizes -->
-        <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
-            <span id="musicIcon">🎵</span>
-        </div>
+                 <div style="font-size: 1.5rem; color: var(--secondary);">🥉 3ನೇ ಬಹುಮಾನ</div>
+                 <div style="font-size: 1.8rem; font-weight: bold;">₹20,000/-</div>
+             </div>
+         </div>
 
         <div class="prize-grid">
             <div class="grid-item">4ನೇ ಬಹುಮಾನ: <b>₹15,000/-</b></div>
@@ -429,6 +442,17 @@
 
     <h3>📅 ಸ್ಪರ್ಧೆಯ ದಿನಾಂಕ: 21 & 22 ಏಪ್ರಿಲ್ 2026</h3> 
     <p>ಸ್ಥಳ: ಹಿಂದ್ ಕೇಸರಿ ತೆರಬಂಡಿ ಮೈದಾನ, ಮಹಾಲಿಂಗಪುರ</p> 
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3816.4862272827116!2d75.1115623!3d16.3919996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDIzJzMxLjIiTiA3NcKwMDYnNTAuOSJF!5e0!3m2!1sen!2sin!4v1712123456789!5m2!1sen!2sin" 
+            width="100%" 
+            height="300" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
 
     <div class="rules"> 
         <h3>⚠️ ನಿಯಮಗಳು:</h3> 
@@ -468,6 +492,16 @@
         </div>
     </div>
 </div> 
+
+<!-- Music Button -->
+<div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+    <span id="musicIcon">🎵</span>
+</div>
+
+<!-- Scroll Down Arrow -->
+<div class="scroll-down" onclick="window.scrollBy({top: 500, behavior: 'smooth'})">
+    ↓
+</div>
 
 <audio id="bgMusic" src="assets/WhatsApp Audio 2026-04-03 at 10.14.09 AM.mpeg"></audio>
 
