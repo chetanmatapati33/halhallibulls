@@ -1,4 +1,4 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
 <html lang="kn"> 
 <head> 
     <meta charset="UTF-8"> 
@@ -506,7 +506,7 @@
     <i class="fas fa-chevron-down"></i>
 </div>
 
-<audio id="bgMusic" src="assets/WhatsApp Audio 2026-04-03 at 10.14.09 AM.mpeg" loop autoplay></audio>
+<audio id="bgMusic" src="assets/song.mpeg" loop></audio>
 
 <script>
     let isPlaying = false;
@@ -514,48 +514,46 @@
     const musicBtn = document.getElementById('musicBtn');
     const musicIcon = document.getElementById('musicIcon');
 
-    // Array of interaction events to trigger autoplay
-    const interactionEvents = ['mousedown', 'touchstart', 'mousemove', 'scroll', 'keydown'];
-
-    function startAutoplay() {
-        if (!isPlaying) {
-            playMusic();
-            // Remove listeners once music starts
-            interactionEvents.forEach(event => {
-                document.removeEventListener(event, startAutoplay);
-            });
-        }
-    }
-
-    // Add listeners for any user interaction
-    interactionEvents.forEach(event => {
-        document.addEventListener(event, startAutoplay, { once: true });
-    });
-
+    // Function to start music
     function playMusic() {
         music.play().then(() => {
             isPlaying = true;
             musicBtn.classList.add('playing');
             musicIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
         }).catch(error => {
-            console.log("Autoplay waiting for interaction...");
+            console.log("Autoplay blocked. Waiting for user click...");
         });
     }
 
-    function toggleMusic() {
+    // Function to toggle music
+    function toggleMusic(event) {
+        if (event) event.stopPropagation(); // Prevent triggering the document click listener
         if (isPlaying) {
             music.pause();
             musicBtn.classList.remove('playing');
             musicIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
             isPlaying = false;
-            // Also stop the autoplay listeners if user manually turns it off
-            interactionEvents.forEach(event => {
-                document.removeEventListener(event, startAutoplay);
-            });
         } else {
             playMusic();
         }
     }
+
+    // Trigger play on first click/touch anywhere on the page
+    function initialPlay() {
+        if (!isPlaying) {
+            playMusic();
+            document.removeEventListener('click', initialPlay);
+            document.removeEventListener('touchstart', initialPlay);
+        }
+    }
+
+    document.addEventListener('click', initialPlay);
+    document.addEventListener('touchstart', initialPlay);
+
+    // Initial check to try playing immediately (works in some browsers if previously allowed)
+    window.addEventListener('load', () => {
+        playMusic();
+    });
 </script>
 
 <footer> 
