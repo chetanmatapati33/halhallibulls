@@ -1,358 +1,499 @@
-<!DOCTYPE html> 
- <html lang="kn"> 
- <head> 
-     <meta charset="UTF-8"> 
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-     <title>ಹಾಲಿ ಹೋರಿಗಳ ತೆರಬಂಡಿ ಸ್ಪರ್ಧೆ - ಮಹಾಲಿಂಗಪುರ</title> 
-     <style> 
-         :root { 
-             --primary: #ff4500; /* ಕಿತ್ತಳೆ ಬಣ್ಣ */ 
-             --secondary: #ffd700; /* ಚಿನ್ನದ ಬಣ್ಣ */ 
-             --dark: #1a1a1a; 
-             --text: #ffffff; 
-         } 
- 
-         body { 
-             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('assets/background.jpeg'); 
-             background-size: cover;
-             background-position: center;
-             background-attachment: fixed;
-             color: var(--text); 
-             margin: 0; 
-             text-align: center; 
-         } 
- 
-         header { 
-             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)); 
-             padding: 50px 20px; 
-             border-bottom: 5px solid var(--primary); 
-         } 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
+<html lang="kn"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>ಹಾಲಲ್ಲಿ  ಹೋರಿಗಳ ತೆರಬಂಡಿ ಸ್ಪರ್ಧೆ - ಮಹಾಲಿಂಗಪುರ</title> 
+    <style> 
+        :root { 
+            --primary: #ff4500; /* ಕಿತ್ತಳೆ ಬಣ್ಣ */ 
+            --secondary: #ffd700; /* ಚಿನ್ನದ ಬಣ್ಣ */ 
+            --dark: #1a1a1a; 
+            --text: #ffffff; 
+        } 
 
-         .highlight { color: var(--secondary); font-size: 1.5em; font-weight: bold; } 
-         
-         .main-title { 
-             font-size: 2.5rem; 
-             color: var(--primary); 
-             text-shadow: 2px 2px 4px #000; 
-             margin-bottom: 10px; 
-             flex: 1;
-             margin: 0 20px;
-         } 
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('assets/background.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text); 
+            margin: 0; 
+            text-align: center; 
+        } 
 
-         .title-wrapper {
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             margin: 20px 0;
-             padding: 0 10px;
-         }
+        header { 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)); 
+            padding: 50px 20px; 
+            border-bottom: 5px solid var(--primary); 
+        } 
 
-         .title-side-img {
-             width: 80px;
-             height: 80px;
-             border-radius: 50%;
-             border: 3px solid var(--secondary);
-             object-fit: cover;
-             box-shadow: 0 0 15px var(--secondary);
-             animation: pop 1.5s infinite alternate;
-         }
+        .highlight { color: var(--secondary); font-size: 1.5em; font-weight: bold; } 
+        
+        .main-title { 
+            font-size: 2.5rem; 
+            color: var(--primary); 
+            text-shadow: 2px 2px 4px #000; 
+            margin-bottom: 10px; 
+            flex: 1;
+            margin: 0 20px;
+        } 
 
-         @keyframes pop {
-             from { transform: scale(1); }
-             to { transform: scale(1.15); }
-         }
- 
-         .container { padding: 20px; max-width: 900px; margin: auto; } 
- 
-         .prize-card { 
-             background: rgba(42, 42, 42, 0.7); 
-             backdrop-filter: blur(10px);
-             border: 2px solid var(--primary); 
-             border-radius: 15px; 
-             padding: 20px; 
-             margin: 20px 0; 
-             box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3); 
-         } 
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 0 10px;
+        }
 
-         .top-prizes {
-             display: flex;
-             align-items: center;
-             justify-content: space-around;
-             margin: 30px 0;
-             gap: 15px;
-         }
+        .title-side-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--secondary);
+            object-fit: cover;
+            box-shadow: 0 0 15px var(--secondary);
+            animation: pop 1.5s infinite alternate;
+        }
 
-         .prize-box {
-             background: rgba(255, 255, 255, 0.05);
-             padding: 15px;
-             border-radius: 10px;
-             border: 1px solid var(--secondary);
-             min-width: 120px;
-         }
+        @keyframes pop {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
 
-         .scooter-container { 
-             display: flex; 
-             flex-direction: column; 
-             align-items: center; 
-             justify-content: center; 
-             height: 400px;
-             perspective: 1000px; 
-             margin: 20px 0;
-         } 
- 
-         /* The card holding the scooter */ 
-         .scooter-card { 
-             position: relative; 
-             display: flex; 
-             flex-direction: column; 
-             align-items: center; 
-             transform-style: preserve-3d;
-             animation: float 3s ease-in-out infinite; 
-         } 
- 
-          .scooter-img-wrapper {
-              transform-style: preserve-3d;
-              animation: rotate360 8s linear infinite;
-              filter: drop-shadow(0 0 20px var(--secondary));
-          }
+        .container { padding: 20px; max-width: 900px; margin: auto; } 
 
-          .scooter-img {
-              width: 320px;
-              height: auto;
-              filter: drop-shadow(0 0 15px var(--secondary));
-              border-radius: 15px;
-          }
- 
-         /* Shadow/Platform beneath the scooter */ 
-         .platform { 
-             width: 180px; 
-             height: 25px; 
-             background: rgba(0, 0, 0, 0.4); 
-             border-radius: 50%; 
-             margin-top: 10px; 
-             filter: blur(8px); 
-             animation: shadowPulse 3s ease-in-out infinite;
-         } 
+        .prize-card { 
+            position: relative;
+            background: rgba(42, 42, 42, 0.7); 
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--primary); 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin: 20px 40px; /* Added side margins to accommodate music button */
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3); 
+        } 
 
-         @keyframes rotate360 { 
-             0% { transform: rotateY(0deg); } 
-             100% { transform: rotateY(360deg); } 
-         } 
- 
-         @keyframes float { 
-             0%, 100% { transform: translateY(0); } 
-             50% { transform: translateY(-25px); } 
-         }
+        .top-prizes {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 30px 0;
+            gap: 15px;
+        }
 
-         @keyframes shadowPulse {
-             0%, 100% { transform: scale(1); opacity: 0.4; }
-             50% { transform: scale(0.8); opacity: 0.2; }
-         }
+        .prize-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--secondary);
+            min-width: 120px;
+        }
 
-         .prize-grid {
-             display: grid;
-             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-             gap: 15px;
-             margin-top: 30px;
-             text-align: left;
-         }
+        .scooter-container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 400px;
+            perspective: 1000px; 
+            margin: 20px 0;
+        } 
 
-         .grid-item {
-             background: rgba(255, 255, 255, 0.1);
-             padding: 10px 15px;
-             border-radius: 8px;
-             border-left: 4px solid var(--secondary);
-             font-size: 1.1rem;
-         }
- 
-         .prize-table { 
-             width: 100%; 
-             border-collapse: collapse; 
-             margin-top: 20px; 
-         } 
- 
-         .prize-table td { 
-             padding: 10px; 
-             border-bottom: 1px solid #444; 
-             font-size: 1.1rem; 
-         } 
- 
-         .btn-register { 
-             background-color: var(--primary); 
-             color: white; 
-             padding: 15px 30px; 
-             text-decoration: none; 
-             font-weight: bold; 
-             border-radius: 50px; 
-             display: inline-block; 
-             margin: 20px 0; 
-             font-size: 1.2rem; 
-             animation: pulse 2s infinite; 
-         } 
- 
-         @keyframes pulse { 
-             0% { transform: scale(1); } 
-             50% { transform: scale(1.05); } 
-             100% { transform: scale(1); } 
-         } 
- 
-         .contact-section { 
-             background-color: rgba(51, 51, 51, 0.7); 
-             backdrop-filter: blur(5px);
-             padding: 30px; 
-             border-radius: 15px; 
-         } 
- 
-         .rules { 
-             text-align: left; 
-             background: rgba(253, 242, 233, 0.9); 
-             color: #000; 
-             padding: 20px; 
-             border-radius: 10px; 
-             border-left: 10px solid var(--primary); 
-         } 
- 
-         .instagram-link {
-             display: inline-flex;
-             align-items: center;
-             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-             color: white;
-             padding: 10px 20px;
-             border-radius: 10px;
-             text-decoration: none;
-             font-weight: bold;
-             margin-top: 15px;
-             transition: transform 0.3s;
-         }
+        /* The card holding the scooter */ 
+        .scooter-card { 
+            position: relative; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            transform-style: preserve-3d;
+            animation: float 3s ease-in-out infinite; 
+        } 
 
-         .instagram-link:hover {
-             transform: scale(1.05);
-         }
+        .scooter-img-wrapper {
+            transform-style: preserve-3d;
+            animation: rotate360 8s linear infinite;
+            filter: drop-shadow(0 0 20px var(--secondary));
+        }
 
-         footer { padding: 20px; font-size: 0.9rem; color: #888; } 
+        .scooter-img { 
+            width: 320px; 
+            height: auto; 
+            filter: drop-shadow(0 0 15px var(--secondary));
+            border-radius: 15px;
+            display: block;
+        } 
 
-         /* ಸಣ್ಣ ಪರದೆಗಳಿಗಾಗಿ ಹೊಂದಾಣಿಕೆ */
-         @media (max-width: 600px) {
-             .main-title {
-                 font-size: 1.8rem;
-                 margin: 0 10px;
-             }
-             .title-side-img {
-                 width: 50px;
-                 height: 50px;
-             }
-             .title-wrapper {
-                 gap: 10px;
-                 margin: 10px 0;
-             }
-             .scooter-img {
-                 width: 150px;
-             }
-             .scooter-container {
-                 height: 250px;
-             }
-         }
-     </style> 
- </head> 
- <body> 
- 
- <header> 
-     <p class="highlight">🚩 ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ಪ್ರಸನ್ನ 🚩</p> 
-     <div class="title-wrapper">
-         <img src="assets/image1.jpg" class="title-side-img" alt="Left Image">
-         <h1 class="main-title">
-             <marquee behavior="scroll" direction="left" scrollamount="8">ಐದೇಶಿ ನಿಮಿತ್ಯವಾಗಿ ದ್ವಿತೀಯ ಬಾರಿಗೆ ಹಾಲಿ ಹೋರಿಗಳ ತೆರಬಂಡಿ ಸ್ಪರ್ಧೆ</marquee>
-         </h1> 
-         <img src="assets/image2.jpg" class="title-side-img" alt="Right Image">
-     </div>
-     <div style="display: flex; justify-content: space-around; font-weight: bold; font-size: 1.1rem; margin-top: 10px;">
-         <span>ತಾ : ರಬಕವಿ ಬನಹಟ್ಟಿ</span>
-         <span>ಮಹಾಲಿಂಗಪುರ</span>
-         <span>ಜಿ : ಬಾಗಲಕೋಟೆ</span>
-     </div>
- </header> 
- 
- <div class="container"> 
-     <div class="prize-card"> 
-         <h2 style="color: var(--secondary);">🏆 ಬಂಪರ್ ಬಹುಮಾನಗಳು</h2> 
-         
-         <div class="top-prizes">
-             <div class="prize-box">
-                 <div style="font-size: 1.5rem; color: var(--secondary);">🥈 2ನೇ ಬಹುಮಾನ</div>
-                 <div style="font-size: 1.8rem; font-weight: bold;">₹25,000/-</div>
-             </div>
+        /* Shadow/Platform beneath the scooter */ 
+        .platform { 
+            width: 180px; 
+            height: 25px; 
+            background: rgba(0, 0, 0, 0.4); 
+            border-radius: 50%; 
+            margin-top: 10px; 
+            filter: blur(8px); 
+            animation: shadowPulse 3s ease-in-out infinite;
+        } 
 
-             <div class="scooter-container">
-                 <div class="scooter-card">
-                     <div class="scooter-img-wrapper">
-                         <img src="assets/electric-scooty.jpeg" class="scooter-img" alt="Electric Scooter">
-                     </div>
-                     <div class="platform"></div>
-                 </div>
-                 <div style="font-size: 1.2rem; color: var(--secondary); margin-top: 20px;">🥇 1ನೇ ಬಹುಮಾನ</div>
-                 <div style="font-size: 1.5rem; font-weight: bold;">ಎಲೆಕ್ಟ್ರಿಕ್ ಸ್ಕೂಟರ್</div>
-             </div>
+        @keyframes rotate360 { 
+            0% { transform: rotateY(0deg); } 
+            100% { transform: rotateY(360deg); } 
+        } 
 
-             <div class="prize-box">
-                 <div style="font-size: 1.5rem; color: var(--secondary);">🥉 3ನೇ ಬಹುಮಾನ</div>
-                 <div style="font-size: 1.8rem; font-weight: bold;">₹20,000/-</div>
-             </div>
-         </div>
+        @keyframes float { 
+            0%, 100% { transform: translateY(0); } 
+            50% { transform: translateY(-25px); } 
+        }
 
-         <div class="prize-grid">
-             <div class="grid-item">4ನೇ ಬಹುಮಾನ: <b>₹15,000/-</b></div>
-             <div class="grid-item">5ನೇ ಬಹುಮಾನ: <b>₹12,000/-</b></div>
-             <div class="grid-item">6ನೇ ಬಹುಮಾನ: <b>₹10,000/-</b></div>
-             <div class="grid-item">7ನೇ ಬಹುಮಾನ: <b>₹9,000/-</b></div>
-             <div class="grid-item">8ನೇ ಬಹುಮಾನ: <b>₹8,000/-</b></div>
-             <div class="grid-item">9ನೇ ಬಹುಮಾನ: <b>₹7,000/-</b></div>
-             <div class="grid-item">10ನೇ ಬಹುಮಾನ: <b>₹6,000/-</b></div>
-             <div class="grid-item">11ನೇ ಬಹುಮಾನ: <b>₹5,000/-</b></div>
-             <div class="grid-item">12ನೇ ಬಹುಮಾನ: <b>₹4,000/-</b></div>
-             <div class="grid-item">13ನೇ ಬಹುಮಾನ: <b>₹3,000/-</b></div>
-             <div class="grid-item">14ನೇ ಬಹುಮಾನ: <b>₹2,500/-</b></div>
-             <div class="grid-item">15ನೇ ಬಹುಮಾನ: <b>₹2,000/-</b></div>
-         </div>
+        @keyframes shadowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(0.8); opacity: 0.2; }
+        }
 
-         <div style="margin-top: 25px; background: rgba(255, 69, 0, 0.2); padding: 15px; border-radius: 10px; border: 1px dashed var(--secondary);">
-             <h3 style="color: var(--secondary); margin: 0 0 10px 0;">ವಿಶೇಷ ಬಹುಮಾನ 18-21-25ನೇ 3ಪೋಟ್ ಡಾಲ್</h3>
-             <p style="font-weight: bold; font-size: 1.2rem; color: #fff; margin: 0;">ಪ್ರತಿಯೊಂದು ಬಹುಮಾನಕ್ಕೆ ಡಾಲ್ ಮತ್ತು ನಿಶಾನೆ</p>
-         </div>
+        .prize-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            text-align: left;
+        }
 
-         <p style="margin-top: 30px; font-weight: bold; font-size: 1.2rem; color: var(--secondary);">
-             ಪ್ರವೇಶ ಶುಲ್ಕ: ₹1001/- | ಲಾಟರಿ ದಿನಾಂಕ: 20-04-2026
-         </p> 
-     </div> 
- 
-     <h3>📅 ಸ್ಪರ್ಧೆಯ ದಿನಾಂಕ: 21 & 22 ಏಪ್ರಿಲ್ 2026</h3> 
-     <p>ಸ್ಥಳ: ಹಿಂದ್ ಕೇಸರಿ ತೆರಬಂಡಿ ಮೈದಾನ, ಮಹಾಲಿಂಗಪುರ</p> 
- 
-     <div class="rules"> 
-         <h3>⚠️ ನಿಯಮಗಳು:</h3> 
-         <ul> 
-             <li>ಜರ್ಸಿ ಹೋರಿಗಳಿಗೆ ಅವಕಾಶವಿಲ್ಲ.</li> 
-             <li>ಸಮಯ ಕೇವಲ 2 ನಿಮಿಷ ಮಾತ್ರ.</li> 
-             <li>ಚಾರ್ಜರ್ ಹಚ್ಚುವಂತಿಲ್ಲ.</li> 
-             <li>ಕಮಿಟಿ ನಿರ್ಣಯವೇ ಕೊನೆಯ ನಿರ್ಣಯ.</li>
-         </ul> 
-     </div> 
- 
-     <a href="tel:7337739919" class="btn-register">ಈಗಲೇ ಹೆಸರು ನೋಂದಾಯಿಸಿ!</a> 
- 
-     <div class="contact-section"> 
-         <h3>📞 ಸಂಪರ್ಕ ಸಂಖ್ಯೆಗಳು:</h3> 
-         <p>7337739919 | 8495005212</p> 
-         <p>8867612860 | 8971512767</p> 
-         <a href="https://www.instagram.com/mahalingpur_halalli_bulls?igsh=MTFlZmhpaGxybm13NA==" class="instagram-link" target="_blank">
-             📸 Follow us on Instagram
-         </a>
-     </div> 
- </div> 
- 
- <footer> 
-     <p>© 2026 ಮಹಾಲಿಂಗಪುರ ತೆರಬಂಡಿ ಸ್ಪರ್ಧಾ ಕಮಿಟಿ. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.</p> 
- </footer> 
- 
- </body> 
- </html>
+        .grid-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .prize-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+        } 
+
+        .prize-table td { 
+            padding: 10px; 
+            border-bottom: 1px solid #444; 
+            font-size: 1.1rem; 
+        } 
+
+        .btn-register { 
+            background-color: var(--primary); 
+            color: white; 
+            padding: 15px 30px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 50px; 
+            display: inline-block; 
+            margin: 20px 0; 
+            font-size: 1.2rem; 
+            animation: pulse 2s infinite; 
+        } 
+
+        @keyframes pulse { 
+            0% { transform: scale(1); } 
+            50% { transform: scale(1.05); } 
+            100% { transform: scale(1); } 
+        } 
+
+        .contact-section { 
+            background-color: rgba(51, 51, 51, 0.7); 
+            backdrop-filter: blur(5px);
+            padding: 30px; 
+            border-radius: 15px; 
+        } 
+
+        .rules { 
+            text-align: left; 
+            background: rgba(253, 242, 233, 0.9); 
+            color: #000; 
+            padding: 20px; 
+            border-radius: 10px; 
+            border-left: 10px solid var(--primary); 
+        } 
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .instagram-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* Gallery Styles */
+        .gallery-section {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+        }
+
+        .gallery-title {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-subtitle {
+            color: #ddd;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 3px solid var(--secondary);
+            height: 250px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Music Button Styles */
+        .music-btn {
+            position: absolute;
+            right: -25px; /* Aligned with the border but clearly outside */
+            top: 180px; /* Aligned vertically with 3rd prize row */
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.6);
+            border: 2px solid white;
+            animation: pulse 2s infinite;
+            z-index: 100;
+        }
+
+        .music-btn i {
+            font-size: 30px;
+            color: white;
+        }
+
+        .playing {
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        footer { padding: 20px; font-size: 0.9rem; color: #888; } 
+
+        /* ಸಣ್ಣ ಪರದೆಗಳಿಗಾಗಿ ಹೊಂದಾಣಿಕೆ */
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 1.8rem;
+                margin: 0 10px;
+            }
+            .title-side-img {
+                width: 50px;
+                height: 50px;
+            }
+            .title-wrapper {
+                gap: 10px;
+                margin: 10px 0;
+            }
+            .scooter-img {
+                width: 150px;
+            }
+            .scooter-container {
+                height: 250px;
+            }
+            .top-prizes {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .music-btn {
+                position: relative;
+                right: auto;
+                top: auto;
+                margin: 20px auto;
+            }
+            .prize-card {
+                margin: 20px 10px;
+            }
+        }
+    </style> 
+</head> 
+<body> 
+
+<header> 
+    <p class="highlight">🚩 ಶ್ರೀ ಮಹಾಲಿಂಗೇಶ್ವರ ಪ್ರಸನ್ನ 🚩</p> 
+    <div class="title-wrapper">
+        <img src="assets/image1.jpg" class="title-side-img" alt="Left Image">
+        <h1 class="main-title">
+            <marquee behavior="scroll" direction="left" scrollamount="8">ಐದೇಶಿ ನಿಮಿತ್ಯವಾಗಿ ದ್ವಿತೀಯ ಬಾರಿಗೆ ಹಾಲಲ್ಲಿ  ಹೋರಿಗಳ ತೆರಬಂಡಿ ಸ್ಪರ್ಧೆ</marquee>
+        </h1> 
+        <img src="assets/image2.jpg" class="title-side-img" alt="Right Image">
+    </div>
+    <div style="display: flex; justify-content: space-around; font-weight: bold; font-size: 1.1rem; margin-top: 10px;">
+        <span>ತಾ : ರಬಕವಿ ಬನಹಟ್ಟಿ</span>
+        <span>ಮಹಾಲಿಂಗಪುರ</span>
+        <span>ಜಿ : ಬಾಗಲಕೋಟೆ</span>
+    </div>
+</header> 
+
+<div class="container"> 
+    <div class="prize-card"> 
+        <h2 style="color: var(--secondary);">🏆 ಬಂಪರ್ ಬಹುಮಾನಗಳು</h2> 
+        
+        <div class="top-prizes">
+            <div class="prize-box">
+                <div style="font-size: 1.5rem; color: var(--secondary);">🥈 2ನೇ ಬಹುಮಾನ</div>
+                <div style="font-size: 1.8rem; font-weight: bold;">₹25,000/-</div>
+            </div>
+
+            <div class="scooter-container">
+                <div class="scooter-card">
+                    <div class="scooter-img-wrapper">
+                        <img src="assets/electric-scooty.jpeg" class="scooter-img" alt="Electric Scooter">
+                    </div>
+                    <div class="platform"></div>
+                </div>
+                <div style="font-size: 1.2rem; color: var(--secondary); margin-top: 20px;">🥇 1ನೇ ಬಹುಮಾನ</div>
+                <div style="font-size: 1.5rem; font-weight: bold;">ಎಲೆಕ್ಟ್ರಿಕ್ ಸ್ಕೂಟರ್</div>
+            </div>
+
+            <div class="prize-box">
+                <div style="font-size: 1.5rem; color: var(--secondary);">🥉 3ನೇ ಬಹುಮಾನ</div>
+                <div style="font-size: 1.8rem; font-weight: bold;">₹20,000/-</div>
+            </div>
+        </div>
+
+        <!-- Music Button Moved Outside Top Prizes -->
+        <div class="music-btn" id="musicBtn" onclick="toggleMusic()">
+            <span id="musicIcon">🎵</span>
+        </div>
+
+        <div class="prize-grid">
+            <div class="grid-item">4ನೇ ಬಹುಮಾನ: <b>₹15,000/-</b></div>
+            <div class="grid-item">5ನೇ ಬಹುಮಾನ: <b>₹12,000/-</b></div>
+            <div class="grid-item">6ನೇ ಬಹುಮಾನ: <b>₹10,000/-</b></div>
+            <div class="grid-item">7ನೇ ಬಹುಮಾನ: <b>₹9,000/-</b></div>
+            <div class="grid-item">8ನೇ ಬಹುಮಾನ: <b>₹8,000/-</b></div>
+            <div class="grid-item">9ನೇ ಬಹುಮಾನ: <b>₹7,000/-</b></div>
+            <div class="grid-item">10ನೇ ಬಹುಮಾನ: <b>₹6,000/-</b></div>
+            <div class="grid-item">11ನೇ ಬಹುಮಾನ: <b>₹5,000/-</b></div>
+            <div class="grid-item">12ನೇ ಬಹುಮಾನ: <b>₹4,000/-</b></div>
+            <div class="grid-item">13ನೇ ಬಹುಮಾನ: <b>₹3,000/-</b></div>
+            <div class="grid-item">14ನೇ ಬಹುಮಾನ: <b>₹2,500/-</b></div>
+            <div class="grid-item">15ನೇ ಬಹುಮಾನ: <b>₹2,000/-</b></div>
+        </div>
+
+        <div style="margin-top: 25px; background: rgba(255, 69, 0, 0.2); padding: 15px; border-radius: 10px; border: 1px dashed var(--secondary);">
+            <h3 style="color: var(--secondary); margin: 0 0 10px 0;">ವಿಶೇಷ ಬಹುಮಾನ 18-21-25ನೇ 3ಪೋಟ್ ಡಾಲ್</h3>
+            <p style="font-weight: bold; font-size: 1.2rem; color: #fff; margin: 0;">ಪ್ರತಿಯೊಂದು ಬಹುಮಾನಕ್ಕೆ ಡಾಲ್ ಮತ್ತು ನಿಶಾನೆ</p>
+        </div>
+
+        <p style="margin-top: 30px; font-weight: bold; font-size: 1.2rem; color: var(--secondary);">
+            ಪ್ರವೇಶ ಶುಲ್ಕ: ₹1001/- | ಲಾಟ್ ದಿನಾಂಕ: 20-04-2026
+        </p> 
+    </div> 
+
+    <h3>📅 ಸ್ಪರ್ಧೆಯ ದಿನಾಂಕ: 21 & 22 ಏಪ್ರಿಲ್ 2026</h3> 
+    <p>ಸ್ಥಳ: ಹಿಂದ್ ಕೇಸರಿ ತೆರಬಂಡಿ ಮೈದಾನ, ಮಹಾಲಿಂಗಪುರ</p> 
+
+    <div class="rules"> 
+        <h3>⚠️ ನಿಯಮಗಳು:</h3> 
+        <ul> 
+            <li>ಜರ್ಸಿ ಹೋರಿಗಳಿಗೆ ಅವಕಾಶವಿಲ್ಲ.</li> 
+            <li>ಸಮಯ ಕೇವಲ 2 ನಿಮಿಷ ಮಾತ್ರ.</li> 
+            <li>ಚಾರ್ಜರ್ ಹಚ್ಚುವಂತಿಲ್ಲ.</li> 
+            <li>ಕಮಿಟಿ ನಿರ್ಣಯವೇ ಕೊನೆಯ ನಿರ್ಣಯ.</li>
+        </ul> 
+    </div> 
+
+    <a href="tel:7337739919" class="btn-register">ಈಗಲೇ ಹೆಸರು ನೋಂದಾಯಿಸಿ!</a> 
+
+    <div class="contact-section"> 
+        <h3>📞 ಸಂಪರ್ಕ ಸಂಖ್ಯೆಗಳು:</h3> 
+        <p>7337739919 | 8495005212</p> 
+        <p>8867612860 | 8971512767</p> 
+        <a href="https://www.instagram.com/mahalingpur_halalli_bulls?igsh=MTFlZmhpaGxybm13NA==" class="instagram-link" target="_blank">
+            📸 Follow us on Instagram
+        </a>
+    </div> 
+
+    <!-- Gallery Section -->
+    <div class="gallery-section">
+        <h2 class="gallery-title">2025ರ ಹಬ್ಬದ ನೆನಪುಗಳು</h2>
+        <p class="gallery-subtitle">"ನಮ್ಮ ಸಂಪ್ರದಾಯ, ನಮ್ಮ ಹೆಮ್ಮೆ"</p>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/1.jpeg" alt="Memories 1"></div>
+            <div class="gallery-item"><img src="assets/2.jpeg" alt="Memories 2"></div>
+            <div class="gallery-item"><img src="assets/3.jpeg" alt="Memories 3"></div>
+            <div class="gallery-item"><img src="assets/4.jpeg" alt="Memories 4"></div>
+            <div class="gallery-item"><img src="assets/5.jpeg" alt="Memories 5"></div>
+            <div class="gallery-item"><img src="assets/6.jpeg" alt="Memories 6"></div>
+            <div class="gallery-item"><img src="assets/7.jpeg" alt="Memories 7"></div>
+            <div class="gallery-item"><img src="assets/8.jpeg" alt="Memories 8"></div>
+            <div class="gallery-item"><img src="assets/9.jpeg" alt="Memories 9"></div>
+        </div>
+    </div>
+</div> 
+
+<audio id="bgMusic" src="assets/WhatsApp Audio 2026-04-03 at 10.14.09 AM.mpeg"></audio>
+
+<script>
+    let isPlaying = false;
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const musicIcon = document.getElementById('musicIcon');
+
+    function toggleMusic() {
+        if (isPlaying) {
+            music.pause();
+            musicBtn.classList.remove('playing');
+            musicIcon.innerText = '🎵';
+        } else {
+            music.play();
+            musicBtn.classList.add('playing');
+            musicIcon.innerText = '🔊';
+        }
+        isPlaying = !isPlaying;
+    }
+</script>
+
+<footer> 
+    <p>© 2026 ಮಹಾಲಿಂಗಪುರ ತೆರಬಂಡಿ ಸ್ಪರ್ಧಾ ಕಮಿಟಿ. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.</p> 
+</footer> 
+
+</body> 
+</html>
