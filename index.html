@@ -1,9 +1,11 @@
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<!DOCTYPE html> 
 <html lang="kn"> 
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>ಹಾಲಲ್ಲಿ  ಹೋರಿಗಳ ತೆರಬಂಡಿ ಸ್ಪರ್ಧೆ - ಮಹಾಲಿಂಗಪುರ</title> 
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style> 
         :root { 
             --primary: #ff4500; /* ಕಿತ್ತಳೆ ಬಣ್ಣ */ 
@@ -301,7 +303,8 @@
         }
 
         .music-btn span {
-            font-size: 35px;
+            font-size: 25px;
+            color: white;
         }
 
         /* Scroll Down Arrow */
@@ -494,16 +497,16 @@
 </div> 
 
 <!-- Music Button -->
-<div class="music-btn" id="musicBtn" onclick="toggleMusic()">
-    <span id="musicIcon">🎵</span>
+<div class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Turn sound off/on">
+    <span id="musicIcon"><i class="fas fa-volume-up"></i></span>
 </div>
 
 <!-- Scroll Down Arrow -->
 <div class="scroll-down" onclick="window.scrollBy({top: 500, behavior: 'smooth'})">
-    ↓
+    <i class="fas fa-chevron-down"></i>
 </div>
 
-<audio id="bgMusic" src="assets/WhatsApp Audio 2026-04-03 at 10.14.09 AM.mpeg"></audio>
+<audio id="bgMusic" src="assets/WhatsApp Audio 2026-04-03 at 10.14.09 AM.mpeg" loop></audio>
 
 <script>
     let isPlaying = false;
@@ -511,24 +514,41 @@
     const musicBtn = document.getElementById('musicBtn');
     const musicIcon = document.getElementById('musicIcon');
 
+    // Attempt to play music automatically when the page is clicked anywhere
+    document.addEventListener('click', function() {
+        if (!isPlaying) {
+            playMusic();
+        }
+    }, { once: true }); // Only runs once on the first click
+
+    function playMusic() {
+        music.play().then(() => {
+            isPlaying = true;
+            musicBtn.classList.add('playing');
+            musicIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
+        }).catch(error => {
+            console.log("Autoplay blocked by browser. User interaction needed.");
+        });
+    }
+
     function toggleMusic() {
         if (isPlaying) {
             music.pause();
             musicBtn.classList.remove('playing');
-            musicIcon.innerText = '🎵';
+            musicIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            isPlaying = false;
         } else {
-            music.play();
-            musicBtn.classList.add('playing');
-            musicIcon.innerText = '🔊';
+            playMusic();
         }
-        isPlaying = !isPlaying;
     }
 </script>
 
 <footer> 
     <p>© 2026 ಮಹಾಲಿಂಗಪುರ ತೆರಬಂಡಿ ಸ್ಪರ್ಧಾ ಕಮಿಟಿ. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.</p> 
     <p style="margin-top: 10px; color: #ccc;">ಈ ವೆಬ್‌ಸೈಟ್ ಅನ್ನು ಅಭಿವೃದ್ಧಿಪಡಿಸಿದವರು: 
-        <a href="https://www.instagram.com/kalki__33_?igsh=cnhxbHEzcXpib2dh" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: bold;">&#128247; Chetan M</a>
+        <a href="https://www.instagram.com/kalki__33_?igsh=cnhxbHEzcXpib2dh" target="_blank" style="color: var(--secondary); text-decoration: none; font-weight: bold;">
+            <i class="fab fa-instagram"></i> Chetan M
+        </a>
     </p>
 </footer> 
 
